@@ -16,9 +16,9 @@ def test(got, expected):
 # Calls the functions in pythonBasics1 with interesting inputs.
 def main():
     # set which functions to test
-    check_count_char = True
+    check_count_char = False
     check_is_power_of = False
-    check_longest_word = False
+    check_longest_word = True
 
     if check_count_char:
         print('Testing count_char:')
