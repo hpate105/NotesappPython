@@ -15,6 +15,12 @@ class TestPythonBasicsOne(unittest.TestCase):
 
         self.assertEqual(pythonBasics3.ends_with_consonant("Do I know how old you are you"), False)
 
+        self.assertEqual(pythonBasics3.ends_with_consonant("How you feel today"), True)
+
+        self.assertEqual(pythonBasics3.ends_with_consonant("How are you"), False)
+
+        self.assertEqual(pythonBasics3.ends_with_consonant("What are you learning today"), True)
+
         # Please add three more test cases following the order above
 
 #Test case for ends_with_number
@@ -28,6 +34,11 @@ class TestPythonBasicsOne(unittest.TestCase):
 
         self.assertEqual(pythonBasics3.ends_with_number("Blue plus purple equals 5"), True)
 
+        self.assertEqual(pythonBasics3.ends_with_number("The last digit is number 0"),True)
+
+        self.assertEqual(pythonBasics3.ends_with_number("Does last digit has number"),False)
+
+        self.assertEqual(pythonBasics3.ends_with_number("The digit is 5"), True)
         # Please add three more test cases following the order above
 
 
