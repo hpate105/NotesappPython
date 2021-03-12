@@ -11,30 +11,57 @@
 # to n (including n).
 
 def count_threes(n):
-    return int(n / 3)
+    n = list(str(n))
+    dic = {3: 0, 6: 0, 9: 0}
+
+    for i in n:
+        j = int(i)
+        if j % 3 == 0 and j != 0:
+            dic[j] = dic[j] + 1
+
+    maximum = -1
+    index = -1
+    for k, v in dic.items():
+        if v > maximum:
+            maximum = v
+            index = k
+
+    return index
 
 
 # Part B. longest_consecutive_repeating_char
 # Define a function longest_consecutive_repeating_char(s) that takes
 # a string s and returns the character that has the longest consecutive repeat.
 def longest_consecutive_repeating_char(s):
-  word = len(s)
-  x = 1
-  y = 1
-  char_w = s[0]
-  for i in range(0, word - 1):
-    if s[i] == s[i + 1]:
-      x += 1
+    s = list(s)
+    l = len(s)
+    cnt = 1
+    dic = {}
 
-    else:
-      if x > y:
-        y = x
-        char_w = s[i]
-      x = 1
-  if x > y:
-    y = x
-    char_w = s[i]
-  return char_w
+    for i in range(0, l - 1):
+        if s[i] != s[i + 1]:
+            if (s[i] in dic) and dic[s[i]] > cnt:
+                continue
+            else:
+                dic[s[i]] = cnt
+                cnt = 1
+        else:
+            cnt = cnt + 1
+
+    dic[s[l - 1]] = cnt
+
+    maximum = -1
+    for k, v in dic.items():
+        if v > maximum:
+            maximum = v
+
+    lst = []
+    for k, v in dic.items():
+        if v == maximum:
+            lst.append(k)
+
+    return lst
+
 
 # Part C. is_palindrome
 # Define a function is_palindrome(s) that takes a string s
@@ -43,15 +70,15 @@ def longest_consecutive_repeating_char(s):
 # forwards. Treat capital letters the same as lowercase ones
 # and ignore spaces (i.e. case insensitive).
 def is_palindrome(s):
-  i = 0
-  j = len(s) - 1
-  if i <= j:
-    if s[i] == ' ':
-      i += 1
-    if s[j] == ' ':
-      j -= 1
-    if s[i].lower() != s[j].lower():
-      return False
-    i += 1
-    j -= 1
-  return True
+    i = 0
+    j = len(s) - 1
+    if i <= j:
+        if s[i] == ' ':
+            i += 1
+        if s[j] == ' ':
+            j -= 1
+        if s[i].lower() != s[j].lower():
+            return False
+        i += 1
+        j -= 1
+    return True
