@@ -11,6 +11,7 @@
 # to n (including n).
 
 def count_threes(n):
+    # updated
     n = list(str(n))
     dic = {3: 0, 6: 0, 9: 0}
 
