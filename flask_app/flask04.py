@@ -48,17 +48,17 @@ def get_note(note_id):
 
 @app.route('/notes/new', methods=['GET', 'POST'])
 def new_route():
-    a_user = {'name': 'Harsh', 'email': 'hpate227@uncc.edu'}
-    print('request method is', request.method)
     if request.method == 'POST':
         title = request.form['title']
         text = request.form['noteText']
         from datetime import date
         today = date.today()
         today = today.strftime("%m-%d-%Y")
-        newEntry = Note(title, text, today)
-        db.session.add(newEntry)
+        new_record = Note(title, text, today)
+        db.session.add(new_record)
         db.session.commit()
+        return redirect(url_for('get_notes'))
+
     else:
         a_user = db.session.query(User).filter_by(email='hpate105@uncc.edu')
         return render_template('new.html', user=a_user)
