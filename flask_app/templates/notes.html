@@ -23,9 +23,9 @@
                 <th>Title</th>
                 <th>Date</th>
             </tr>
-           
-            {%for notes in note%}
-            <tr>
+            {% for notes in note %}
+
+             <tr>
                 <td><a href="{{url_for('get_note', note_id=note.id)}}">{{ note.title }}</a></td>
                 <td>{{ note.date }}</td>
             </tr>
